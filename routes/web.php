@@ -15,26 +15,23 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('usuarios', function ($id = null) {
+$app->get('api/user','UserController@index');
+ 
+$app->get('api/user/{id}','UserController@getUser');
+ 
+$app->post('api/user','UserController@saveUser');
+ 
+$app->put('api/user/{id}','UserController@updateUser');
+ 
+$app->delete('api/user/{id}','UserController@deleteUser');
 
-    if (!$id) {
-        return 'Sem id';
-    }
-    return 'User ' . $id;
-});
 
-$app->get('animais[/{id}]', function ($id = null) {
-
-    if (!$id) {
-        return 'Sem id';
-    }
-    return 'User ' . $id;
-});
-
-$app->post('user[/{id}]', function ($id = null) {
-
-    if (!$id) {
-        return 'Sem id';
-    }
-    return 'User ' . $id;
-});
+$app->get('api/animal','AnimalController@index');
+ 
+$app->get('api/animal/{id}','AnimalController@getAnimal');
+ 
+$app->post('api/animal','AnimalController@saveAnimal');
+ 
+$app->put('api/animal/{id}','AnimalController@updateAnimal');
+ 
+$app->delete('api/animal/{id}','AnimalController@deleteAnimal');
