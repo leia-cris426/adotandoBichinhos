@@ -19,6 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->timestamps();
+
+            $table->integer('address_id')->unsigned();
+
+            $table->foreign('address_id')->references('address')->on('id');
         });
     }
 

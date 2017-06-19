@@ -23,9 +23,12 @@ class CreateAnimalsTable extends Migration
             $table->timestamps();
             
             $table->integer('user_id')->unsigned();
-            $table->integer('raca_id')->unsigned();
+            $table->integer('race_id')->unsigned();
             
             
+
+            $table->foreign('user_id')->references('users')->on('id');
+            $table->foreign('race_id')->references('races')->on('id');
         });
     }
 
